@@ -1,15 +1,24 @@
 const req = new XMLHttpRequest();
 
-req.open("GET", "https://ll.thespacedevs.com/2.2.0/launch/upcoming/");
-req.send();
+function getLaunchData() {
+    req.open("GET", "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?is_crewed=true&limit=4");
+    req.send();
 
-req.onreadystatechange = getJSON;
+    req.onreadystatechange = getJSON;
+}
 
-function getJSON(){
-    if (req.readyState == 4 && req.status == 200){
+function getAstronautData() {
+    req.open("GET", "https://ll.thespacedevs.com/2.2.0/astronaut/?is_human=false&limit=4");
+    req.send();
+
+    req.onreadystatechange = getJSON;
+}
+
+function getJSON() {
+    if (req.readyState == 4 && req.status == 200) {
         var res = req.responseText;
 
-        var launches = JSON.parse(res);
-        console.log(launches);
+        var obj = JSON.parse(res);
+        console.log(obj);
     }
 }
