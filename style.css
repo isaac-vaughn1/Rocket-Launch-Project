@@ -1,0 +1,10 @@
+.imgHolder {
+    width: 300px;
+    height: 200px; 
+    overflow: hidden; 
+}
+
+.dataImg {
+    width: 100%;
+    height: auto;
+}
